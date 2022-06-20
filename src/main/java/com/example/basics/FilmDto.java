@@ -1,18 +1,18 @@
 package com.example.basics;
 
 import lombok.*;
-
-import java.math.BigDecimal;
+import lombok.experimental.FieldDefaults;
 
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class FilmDto {
-    private String title;
-    private String author;
-    private String description;
-    private String url;
-
+    String title;
+    String author;
+    String description;
+    String category;
+    String url;
 }

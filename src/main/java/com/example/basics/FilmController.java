@@ -22,23 +22,23 @@ public class FilmController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<FilmDto> getFilm(@PathParam("id") Long id) {
+    public ResponseEntity<FilmDto> getFilm(@PathParam("id") String id) {
         return new ResponseEntity<>(service.getFilm(id), HttpStatus.OK);
     }
 
     @PostMapping()
     public ResponseEntity<FilmDto> addFilm(@RequestBody FilmDto film) {
-        return new ResponseEntity<>(service.addFilm(film), HttpStatus.OK);
+        return new ResponseEntity<>(service.saveFilm(film), HttpStatus.OK);
     }
 
     @PutMapping()
-    public ResponseEntity<FilmDto> editFilm(@RequestParam Long id, @RequestBody FilmDto filmDto) {
+    public ResponseEntity<FilmDto> editFilm(@RequestParam String id, @RequestBody FilmDto filmDto) {
         return new ResponseEntity<>(service.edit(id, filmDto), HttpStatus.OK);
     }
 
     @DeleteMapping()
-    public ResponseEntity<Long> deleteFilm(@RequestParam Long id) {
+    public ResponseEntity<Void> deleteFilm(@RequestParam String id) {
         service.deleteFilm(id);
-        return new ResponseEntity<>(id, HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
